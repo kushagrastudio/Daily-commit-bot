@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Daily Commit Bot</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Daily Commit Bot</h1>
+      <p class="sub">Automatically commit &amp; push to a GitHub repo on a schedule.</p>
+    </header>
+
+    <section class="card">
+      <h2>Dashboard password</h2>
+      <p class="hint">Only needed if you set DASHBOARD_PASSWORD in your environment.</p>
+      <input type="password" id="password" placeholder="Dashboard password (optional)" />
+    </section>
+
+    <section class="card">
+      <h2>Repository settings</h2>
+      <label>Repo URL (https)</label>
+      <input type="text" id="repoUrl" placeholder="https://github.com/username/repo.git" />
+
+      <label>Local folder name</label>
+      <input type="text" id="repoName" placeholder="target-repo" />
+
+      <label>Branch</label>
+      <input type="text" id="branch" placeholder="main" />
+
+      <label>File to update each commit</label>
+      <input type="text" id="filePath" placeholder="activity-log.md" />
+
+      <label>Cron schedule</label>
+      <input type="text" id="cronSchedule" placeholder="0 12 * * *" />
+      <p class="hint">Standard cron syntax, evaluated in the server's timezone. Default: every day at 12:00.</p>
+
+      <label>Commit messages (one per line, picked at random)</label>
+      <textarea id="commitMessages" rows="4" placeholder="Daily update&#10;Routine sync"></textarea>
+
+      <label class="checkbox-row">
+        <input type="checkbox" id="enabled" />
+        Enable automatic daily commits
+      </label>
+
+      <button id="saveBtn">Save settings</button>
+      <button id="commitNowBtn" class="secondary">Commit now</button>
+      <span id="saveStatus"></span>
+    </section>
+
+    <section class="card">
+      <h2>Status</h2>
+      <div id="statusBox">Loading…</div>
+    </section>
+
+    <section class="card">
+      <h2>Recent activity</h2>
+      <ul id="logList"></ul>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
